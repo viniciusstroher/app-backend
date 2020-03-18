@@ -1,0 +1,21 @@
+#setar php para as variaveis de ambiente para acessar por cmd(se for ambiente windows)
+php composer.phar require laravel/laravel
+php composer.phar create-project --prefer-dist laravel/laravel backend
+cd backend
+
+DB: Sqlite
+
+
+Comandos utilizados
+
+php artisan config:cache
+php artisan config:clear
+php artisan migrate
+php artisan make:seeder UsersTableSeeder
+
+php artisan make:auth
+php artisan make:controller UserController
+php artisan make:controller FeedbackController --resource
+php artisan make:model Feedback --migration
+
+#Adicionar api_token no migration dos users
