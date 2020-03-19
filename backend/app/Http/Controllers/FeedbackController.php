@@ -27,7 +27,7 @@ class FeedbackController extends Controller
         return $user->feedback->toArray();
     }
 
-    public function setFeedback(Request $request){
+    public function putFeedback(Request $request){
         if(!$request->has('like') || !$request->has('dislike')){
             return array("error"=>"Falta parametros like e dislike");
         }
@@ -39,7 +39,7 @@ class FeedbackController extends Controller
             return array("error"=>"O valor de like deve ser diferente do dislike");
         }
 
-        $feedback = App\Feedback::findOrCreate(['user_id'=>$request->user()->id]);
+        $feedback = App\Feedback::firstOrCreate(['user_id'=>$request->user()->id]);
         $feedback->like = $like;
         $feedback->dislike = $dislike;
             
