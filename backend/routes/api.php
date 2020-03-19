@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/auth','UserController@auth');
+Route::group(['middleware' => ['auth:api','force.json']], function () {
+	Route::get('/user','UserController@user');
+	Route::get('/feedback','FeedbackController@getFeedback');
+	Route::post('/feedback','FeedbackController@putFeedback');
+	Route::post('/feedback-count','FeedbackController@count');
 });
