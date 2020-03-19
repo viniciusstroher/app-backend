@@ -4,6 +4,9 @@ Para instalar:
 git clone https://github.com/viniciusstroher/app-backend.git  
 cd app-backend  
 php composer.phar install  
+cd backend  
+php ..\composer.phar install
+
 php migrate:refresh --seed  
 php artisan serve  
   
