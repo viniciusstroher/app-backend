@@ -1,5 +1,7 @@
 # app-backend
 
+Precisa: driver php sqlite
+
 Para instalar:  
 git clone https://github.com/viniciusstroher/app-backend.git  
 cd app-backend  
