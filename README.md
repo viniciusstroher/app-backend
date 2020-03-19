@@ -7,6 +7,7 @@ php composer.phar install
 cd backend  
 php ..\composer.phar install
 
+php config:cache
 php migrate:refresh --seed  
 php artisan serve  
   
