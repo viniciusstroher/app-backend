@@ -18,7 +18,8 @@ class UserController extends Controller
     	$authorizationTokenDecoded = base64_decode($authorizationTokenParsed);
     	$authorizationSplitted = explode(":",$authorizationTokenDecoded);
     	if(count($authorizationSplitted)==1){
-    		return array('error'=>'token invalido');
+    		$invalidTokenReturn = array('error'=>'token invalido');
+            return response()->json($invalidTokenReturn, 401);
     	}
 
     	$email = $authorizationSplitted[0];
@@ -28,13 +29,14 @@ class UserController extends Controller
     	$userInvalidReturn = array('error'=>'usuario invalido');
     	
     	if($user === null){
-    		return $userInvalidReturn;
+    		return response()->json($userInvalidReturn, 401);
     	}else{
     		if (!Hash::check($pwd, $user->password)) {
-    			return $userInvalidReturn;
+    			return response()->json($userInvalidReturn, 401);
  			}
- 			return array("token"=>$user->api_token);
-    		
+
+            $authenticatedReturn = array("token"=>$user->api_token);
+            return response()->json($authenticatedReturn, 200);
     	}
     
     }
