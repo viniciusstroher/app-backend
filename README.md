@@ -2,7 +2,7 @@
 
 Precisa: driver php sqlite
 
-Para instalar:  
+Para instalar:    
 git clone https://github.com/viniciusstroher/app-backend.git  
 cd app-backend  
 php composer.phar install  
